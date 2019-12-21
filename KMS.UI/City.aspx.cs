@@ -23,11 +23,11 @@ namespace KMS.UI
         {
             if (!IsPostBack)
             {
-                GetStateGrid();
+                GetStateList();
             }
 
         }
-        public void GetStateGrid()
+        public void GetStateList()
         {
             List<CityVM> cities = cityService.GetCity();
             gridView.DataSource = cities;
