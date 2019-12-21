@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace KMS.BL.Interface
 {
+    /// <summary>
+    /// This is the interface of City
+    /// </summary>
    public interface ICityService
     {
         int Save(CityVM model);
