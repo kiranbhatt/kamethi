@@ -1,0 +1,6 @@
+KMS.UI/bin/
+KMS.UI/packages/
+KMS.BL/obj/
+KMS.DB/obj/
+KMS.UI/obj/
+KMS.UI/.vs/
