@@ -42,12 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementation\CityService.cs" />
+    <Compile Include="Implementation\MonthlyTransactionService.cs" />
     <Compile Include="Implementation\StateService.cs" />
     <Compile Include="Interface\ICityService.cs" />
+    <Compile Include="Interface\IMonthlyTransactionService.cs" />
     <Compile Include="Interface\IStateService.cs" />
     <Compile Include="Model\CityVM.cs" />
+    <Compile Include="Model\MonthlyTransactionVM.cs" />
     <Compile Include="Model\StateVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\ListtoDataTableConverter.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

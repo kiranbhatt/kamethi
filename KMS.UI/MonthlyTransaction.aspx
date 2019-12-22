@@ -35,7 +35,7 @@
                     <asp:TemplateField HeaderText="Given Amount">
 
                         <ItemTemplate>
-                            <asp:TextBox ID="txtTakenAmount" runat="server" Text='<%# Bind("[Taken Amount]") %>'></asp:TextBox>
+                            <asp:TextBox ID="txtGivenAmount" runat="server" Text='<%# Bind("[Taken Amount]") %>'></asp:TextBox>
                         </ItemTemplate>
                     </asp:TemplateField>
 

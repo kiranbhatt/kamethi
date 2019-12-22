@@ -67,9 +67,9 @@ namespace KMS.DB.Abstract
                 _connection.Open();
                 SqlCommand sqlCommand = new SqlCommand(command, _connection);
                 sqlCommand.CommandType = commandType;
-                if (sqlParameters!=null)
+                if (sqlParameters != null)
                 {
-                    sqlCommand.Parameters.AddRange(sqlParameters); 
+                    sqlCommand.Parameters.AddRange(sqlParameters);
                 }
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable();
@@ -87,5 +87,6 @@ namespace KMS.DB.Abstract
                 _connection.Close();
             }
         }
+
     }
 }
