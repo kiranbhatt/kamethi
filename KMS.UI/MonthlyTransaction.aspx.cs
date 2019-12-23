@@ -28,9 +28,15 @@ namespace KMS.UI
         {
             List<MonthlyTransactionVM> monthlyTransactions = new List<MonthlyTransactionVM>();
 
-           
+            foreach (GridViewRow row in GridView1.Rows)
+            {
+                if (row.RowType == DataControlRowType.DataRow)
+                {
+                    TextBox txtName = (row.FindControl("txtMonthlyInstallment") as TextBox);
+                }
+            }
 
-           
+
 
             monthlyTransactionService.Save(monthlyTransactions);
         }
