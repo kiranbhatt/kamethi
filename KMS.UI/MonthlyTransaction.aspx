@@ -18,7 +18,12 @@
                             <asp:Label ID="Label2" runat="server" Text='<%# Bind("UserName") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="UserId" Visible="false" HeaderText="UserId" InsertVisible="False" ReadOnly="True" SortExpression="UserId" />
+                    <asp:TemplateField HeaderText="UserId">
+                    <ItemTemplate>
+                            <asp:Label ID="lblUsetId" runat="server" Text='<%# Bind("UserId") %>'></asp:Label>
+                        </ItemTemplate>
+                        </asp:TemplateField>
+                    <%--<asp:BoundField DataField="UserId" Visible="false" HeaderText="UserId" InsertVisible="False" ReadOnly="True" SortExpression="UserId" />--%>
 
                     <asp:TemplateField HeaderText="Monthly Installment">
                         <ItemTemplate>
