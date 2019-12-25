@@ -69,6 +69,7 @@
     <Content Include="Global.asax" />
     <Content Include="MonthlyTransaction.aspx" />
     <Content Include="State.aspx" />
+    <Content Include="TransactionSummary.aspx" />
     <Content Include="User.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -97,6 +98,13 @@
     </Compile>
     <Compile Include="State.aspx.designer.cs">
       <DependentUpon>State.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionSummary.aspx.cs">
+      <DependentUpon>TransactionSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TransactionSummary.aspx.designer.cs">
+      <DependentUpon>TransactionSummary.aspx</DependentUpon>
     </Compile>
     <Compile Include="User.aspx.cs">
       <DependentUpon>User.aspx</DependentUpon>
