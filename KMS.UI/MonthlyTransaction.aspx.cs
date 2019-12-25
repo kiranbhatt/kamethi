@@ -24,6 +24,11 @@ namespace KMS.UI
 
         }
 
+        /// <summary>
+        /// This will save all the Transaction record month wise.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnSave_Click(object sender, EventArgs e)
         {
             btnSave.Enabled = false;
