@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="UserId" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None">
+           <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="UserId" DataSourceID="SqlDataSource1" ForeColor="#333333" ShowFooter="true" GridLines="None" Height="224px">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:TemplateField HeaderText="Name" SortExpression="UserName">
@@ -17,12 +17,17 @@
                         <ItemTemplate>
                             <asp:Label ID="Label2" runat="server" Text='<%# Bind("UserName") %>'></asp:Label>
                         </ItemTemplate>
+
+                        <FooterTemplate>
+                            <asp:Label ID="lblTotal" runat="server" Text="Total : "></asp:Label>
+                        </FooterTemplate>
+
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="UserId">
-                    <ItemTemplate>
+                    <asp:TemplateField HeaderText="UserId" Visible="false">
+                        <ItemTemplate>
                             <asp:Label ID="lblUsetId" runat="server" Text='<%# Bind("UserId") %>'></asp:Label>
                         </ItemTemplate>
-                        </asp:TemplateField>
+                    </asp:TemplateField>
                     <%--<asp:BoundField DataField="UserId" Visible="false" HeaderText="UserId" InsertVisible="False" ReadOnly="True" SortExpression="UserId" />--%>
 
                     <asp:TemplateField HeaderText="Monthly Installment">
@@ -35,6 +40,12 @@
                         <ItemTemplate>
                             <asp:TextBox ID="txtTakenAmount" runat="server" Text='<%# Bind("[Taken Amount]") %>'></asp:TextBox>
                         </ItemTemplate>
+
+
+                        <FooterTemplate>
+                            <asp:TextBox ID="txtTotalTakenAmount" runat="server"></asp:TextBox>
+                        </FooterTemplate>
+
                     </asp:TemplateField>
 
                     <asp:TemplateField HeaderText="Given Amount">
@@ -49,13 +60,24 @@
                         <ItemTemplate>
                             <asp:TextBox ID="txtDepositAmount" runat="server" Text='<%# Bind("[Deposit Amount]") %>'></asp:TextBox>
                         </ItemTemplate>
+
+                        <FooterTemplate>
+                            <asp:TextBox ID="txtTotalDepositAmount" runat="server"></asp:TextBox>
+                        </FooterTemplate>
+
                     </asp:TemplateField>
 
                     <asp:TemplateField ConvertEmptyStringToNull="False" HeaderText="Balance Amount" SortExpression="Balance Amount">
                         <ItemTemplate>
                             <asp:TextBox ID="txtBalanceAmount" runat="server" Text='<%# Bind("[Balance Amount]") %>'></asp:TextBox>
                         </ItemTemplate>
+
+                        <FooterTemplate>
+                            <asp:TextBox ID="txtTotalBalanceAmount" runat="server"></asp:TextBox>
+                        </FooterTemplate>
+
                     </asp:TemplateField>
+
 
 
 
@@ -74,9 +96,15 @@
                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:EMSConnectionString %>" SelectCommand="usp_monthlytransactionusers" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+
+             
+
+           <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:EMSConnectionString %>" SelectCommand="usp_monthlytransactionusers" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
         </div>
         <asp:Button ID="btnSave" runat="server" OnClick="btnSave_Click" Text="Save" />
+
+
+
     </form>
 </body>
 </html>

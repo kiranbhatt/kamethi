@@ -63,7 +63,12 @@ namespace KMS.UI
 
 
 
-            monthlyTransactionService.Save(monthlyTransactions);
+            int result = monthlyTransactionService.Save(monthlyTransactions);
+
+            if (result > 0)
+            {
+                Response.Redirect("TransactionSummary.aspx");
+            }
         }
     }
 }

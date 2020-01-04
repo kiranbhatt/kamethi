@@ -4,3 +4,6 @@ KMS.BL/obj/
 KMS.DB/obj/
 KMS.UI/obj/
 KMS.UI/.vs/
+/KMS.Service/bin
+/KMS.Service/obj/Release
+/KMS.UI/Properties/PublishProfiles/kamethi - Web Deploy.pubxml

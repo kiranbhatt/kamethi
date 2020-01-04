@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace KMS.DB.Abstract
 {
@@ -22,6 +23,7 @@ namespace KMS.DB.Abstract
         public BaseDbRepository(string connectionString)
         {
             _connection = new SqlConnection(connectionString);
+            Trace.TraceInformation("connection initlized sucessfully.");
         }
         /// <summary>
         /// This function will be using in INSERT, UPDATE, DELETE  (DML operations)
@@ -44,7 +46,7 @@ namespace KMS.DB.Abstract
             }
             catch (Exception ex)
             {
-
+                Trace.TraceError("Error occured while saving record in Execute() " + ex.Message, sqlParameters);
                 throw ex;
             }
             finally
@@ -79,7 +81,7 @@ namespace KMS.DB.Abstract
             }
             catch (Exception ex)
             {
-
+                Trace.TraceError("Error occured while getting record in Execute() " + ex.Message, sqlParameters);
                 throw ex;
             }
             finally

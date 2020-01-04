@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Diagnostics;
 
 namespace KMS.UI
 {
@@ -18,6 +19,8 @@ namespace KMS.UI
         {
             string connectionString = ConfigurationManager.ConnectionStrings["connectionstring"].ConnectionString;
             cityService = new CityService(connectionString);
+
+
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,7 +42,12 @@ namespace KMS.UI
             CityVM city = new CityVM();
             city.StateId = Convert.ToInt32(ddlState.SelectedValue);
             city.Name = txtCity.Text;
-            cityService.Save(city);
+            int result = cityService.Save(city);
+
+            if (result > 0)
+            {
+                Trace.Write("Info", "City " + city.Name + " saved sucessfully.");
+            }
         }
     }
 }

@@ -12,5 +12,10 @@ namespace KMS.UI
         protected void Application_Start(object sender, EventArgs e)
         {
         }
+
+        protected void Application_BeginRequest()
+        {
+            System.Diagnostics.Trace.CorrelationManager.ActivityId = Guid.NewGuid();
+        }
     }
 }

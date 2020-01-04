@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace KMS.BL.Implementation
 {
@@ -20,39 +21,57 @@ namespace KMS.BL.Implementation
         public List<CityVM> GetCity()
         {
             List<CityVM> cities = new List<CityVM>();
-            
-             DataTable dataTable =Execute(CommandType.StoredProcedure,"Usp_Get_City");
-            if(dataTable!=null)
+
+            try
             {
-                for (int i = 0; i < dataTable.Rows.Count; i++)
+                DataTable dataTable = Execute(CommandType.StoredProcedure, "Usp_Get_City");
+                if (dataTable != null)
                 {
-                    CityVM city = new CityVM();
-                    city.Id = Convert.ToInt32(dataTable.Rows[i]["ID"]);
-                    city.Name = dataTable.Rows[i]["City"].ToString();
-                    city.StateName = Convert.ToString(dataTable.Rows[i]["State"]);
-                    cities.Add(city);
+                    for (int i = 0; i < dataTable.Rows.Count; i++)
+                    {
+                        CityVM city = new CityVM();
+                        city.Id = Convert.ToInt32(dataTable.Rows[i]["ID"]);
+                        city.Name = dataTable.Rows[i]["City"].ToString();
+                        city.StateName = Convert.ToString(dataTable.Rows[i]["State"]);
+                        cities.Add(city);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError("Error occured while fetching Cities. " + ex.Message);
             }
             return cities;
         }
 
         public int Save(CityVM model)
         {
-            SqlParameter[] parameters = new SqlParameter[2];
+            try
+            {
+                SqlParameter[] parameters = new SqlParameter[2];
 
-            parameters[0] = new SqlParameter();
-            parameters[0].SqlDbType = SqlDbType.Int;
-            parameters[0].ParameterName = "@StateId";
-            parameters[0].Value = model.StateId;
+                parameters[0] = new SqlParameter();
+                parameters[0].SqlDbType = SqlDbType.Int;
+                parameters[0].ParameterName = "@StateId";
+                parameters[0].Value = model.StateId;
 
-            parameters[1] = new SqlParameter();
-            parameters[1].SqlDbType = SqlDbType.NVarChar;
-            parameters[1].ParameterName = "@Name";
-            parameters[1].Value = model.Name;
+                parameters[1] = new SqlParameter();
+                parameters[1].SqlDbType = SqlDbType.NVarChar;
+                parameters[1].ParameterName = "@Name";
+                parameters[1].Value = model.Name;
 
-            int result = Execute("Usp_City", CommandType.StoredProcedure, parameters);
-            return result;
-
+                int result = Execute("Usp_City", CommandType.StoredProcedure, parameters);
+                if (result > 0)
+                {
+                    Trace.TraceInformation("City " + model.Name + " saved sucessfully.");
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError("Error occured while saving City. " + ex.Message);
+            }
+            return 0;
         }
     }
 }
