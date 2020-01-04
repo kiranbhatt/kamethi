@@ -86,6 +86,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KMS.BL\KMS.BL.csproj">
+      <Project>{1ab37fc8-7e24-42fb-9e66-5fe8e1f80cc9}</Project>
+      <Name>KMS.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KMS.DB\KMS.DB.csproj">
+      <Project>{a065aa1e-c4e2-4272-9d05-d3cb6d73dec7}</Project>
+      <Name>KMS.DB</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
