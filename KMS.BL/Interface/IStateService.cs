@@ -12,6 +12,5 @@ namespace KMS.BL.Interface
     {
         int Save(StateVM model);
         List<StateVM> GetState();
-        int Add(int a);
     }
 }
