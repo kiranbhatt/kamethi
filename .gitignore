@@ -7,3 +7,5 @@ KMS.UI/.vs/
 /KMS.Service/bin
 /KMS.Service/obj/Release
 /KMS.UI/Properties/PublishProfiles/kamethi - Web Deploy.pubxml
+/KMS.DbScript/bin/Release
+/KMS.DbScript/obj/Release
