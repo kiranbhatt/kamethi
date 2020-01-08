@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-
+using KMS.BL.Model;
 
 namespace KMS.BL.Implementation
 {
@@ -37,6 +37,28 @@ namespace KMS.BL.Implementation
                 }
             }
             return names;
+        }
+
+        public List<User> GetUsers()
+        {
+            List<User> users = new List<User>();
+            DataTable result = Execute(CommandType.Text, "select UserId,UserName,Email,PrimaryPhone,UploadAadhaar,IsActive from [User]");
+
+            if (result != null&& result.Rows.Count>0)
+            {
+                for (int i = 0; i < result.Rows.Count; i++)
+                {
+                    User user = new User();
+                    user.UserId = Convert.ToInt32(result.Rows[i]["UserId"]);
+                    user.UserName = Convert.ToString(result.Rows[i]["UserName"]);
+                    user.Email = Convert.ToString(result.Rows[i]["Email"]);
+                    user.PrimaryPhone = Convert.ToString(result.Rows[i]["PrimaryPhone"]);
+                    user.AadhaarUrl = Convert.ToString(result.Rows[i]["UploadAadhaar"]);
+                    user.IsActive = Convert.ToBoolean(result.Rows[i]["IsActive"]==DBNull.Value ? "false":"true");
+                    users.Add(user);
+                }
+            }
+            return users;
         }
     }
 }

@@ -127,6 +127,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -135,6 +136,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="jquery-3.4.1.js" />
+    <Content Include="Transaction.html" />
+    <Content Include="User.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -150,6 +154,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KMS.BL\KMS.BL.csproj">
+      <Project>{1AB37FC8-7E24-42FB-9E66-5FE8E1F80CC9}</Project>
+      <Name>KMS.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KMS.DB\KMS.DB.csproj">
+      <Project>{A065AA1E-C4E2-4272-9D05-D3CB6D73DEC7}</Project>
+      <Name>KMS.DB</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

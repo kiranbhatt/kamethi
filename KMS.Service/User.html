@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+           
+
+            GetData();
+        });
+
+
+        function GetData() {
+            $.ajax({
+                url: 'kms/User/GetAll',
+                type: 'get',
+                contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                data: "{}",
+                success: function (response) {
+
+                    $('#tbl1').show();
+                    for (var i = 0; i < response.length; i++) {
+                        $('#tbl1').append('<tr><td>' + response[i].UserId + '</td>  <td>' + response[i].UserName + '</td> </tr>')
+                    }
+
+                },
+                error: function () {
+                    alert("process failed");
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <table id="tbl1" style="display:none" class="table-bordered">
+        <thead>
+            <tr>
+                <td>UserId</td>
+                <td>UserName</td>
+                <td>Email</td>
+                <td>PrimaryPhone</td>
+                <td>Aadhaar</td>
+                <td>IsActive</td>
+            </tr>
+        </thead>
+    </table>
+
+</body>
+</html>

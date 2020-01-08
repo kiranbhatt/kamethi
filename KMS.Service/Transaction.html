@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+        function get() {
+
+            $('table tr').each(function (i) {
+                $(this).children('td').each(function (j) {
+                    wordVal = $(this).val();
+                    alert(wordVal);
+                });
+            });
+        }
+
+        $(document).ready(function () {
+
+            var table_body = '<table id="tblTransaction" class="table table-bordered">';
+
+            table_body += '<tr>';
+            table_body += '<th>User Id</th>';
+            table_body += '<th>Monthly Installment</th>';
+            table_body += '<th>TakenAmount</th>';
+            table_body += '<th>GivenAmount</th>';
+            table_body += '<th>DepositeAmount</th>';
+            table_body += '<th>BalanceAmount</th>';
+            table_body += '</tr>';
+
+            for (var i = 1; i < 4; i++) {
+
+                table_body += '<tr>';
+
+                table_body += '<td>' + i + '</td>';
+
+                table_body += '<td><input id="txtMonthlyInstallment_' + i + '" type="text" /></td>';
+                table_body += '<td><input id="TakenAmount' + i + '" type="text" /></td>';
+                table_body += '<td><input id="GivenAmount' + i + '" type="text" /></td>';
+                table_body += '<td><input id="DepositeAmount' + i + '" type="text" /></td>';
+                table_body += '<td><input id="BalanceAmount' + i + '" type="text" /></td>';
+
+                table_body += '</tr>';
+            }
+
+            table_body += '</table>';
+
+            $('#tableDiv').html(table_body);
+
+        })
+
+
+
+    </script>
+</head>
+<body>
+    <div id="tableDiv" style="margin-top:10px">
+
+    </div>
+
+    <input id="btnSave" type="button" value="Save" onclick="get()" />
+
+
+</body>
+</html>
