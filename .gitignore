@@ -19,3 +19,5 @@ KMS.UI/.vs/
 /KMS/.vs/KMS
 /KMS/bin
 /KMS/packages
+/KMS/KMS.UI/bin
+/KMS/KMS.UI/obj/Debug
