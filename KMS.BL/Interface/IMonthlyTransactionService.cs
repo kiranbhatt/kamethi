@@ -9,6 +9,6 @@ namespace KMS.BL.Interface
 {
    public interface IMonthlyTransactionService
     {
-        int Save(List<MonthlyTransactionVM> monthlyTransactions);
+        int Save(MonthlyTransactionInsert monthlyTransaction);
     }
 }

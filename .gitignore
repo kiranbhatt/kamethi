@@ -11,3 +11,11 @@ KMS.UI/.vs/
 /KMS.DbScript/obj/Release
 /KMS.DbScript/KMS.DbScript.dbmdl
 /KMS.DbScript/KMS.DbScript.jfm
+/KMS.DB/bin
+/KMS.DbScript/bin/Debug
+/KMS.DbScript/obj/Debug
+/KMS.Service/.vs/KMS.Service/config
+/KMS.Service/obj/Debug
+/KMS/.vs/KMS
+/KMS/bin
+/KMS/packages

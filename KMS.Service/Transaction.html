@@ -4,9 +4,23 @@
     <meta charset="utf-8" />
     <title></title>
     <script src="jquery-3.4.1.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
+
+
+
+
     <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('#txtMonthlyInstallment').change(function () {
+
+                alert('change 1');
+            });
+
+
+        });
 
 
 
@@ -21,15 +35,18 @@
 
                     var table_body = '<table id="tblTransaction" class="table table-bordered">';
 
+                    table_body = '<thead>';
                     table_body += '<tr>';
                     table_body += '<th>Name</th>';
                     table_body += '<th>Monthly Installment</th>';
-                    table_body += '<th>TakenAmount</th>';
-                    table_body += '<th>GivenAmount</th>';
-                    table_body += '<th>DepositeAmount</th>';
-                    table_body += '<th>BalanceAmount</th>';
+                    table_body += '<th>Taken Credit</th>';
+                    table_body += '<th>Given Amount</th>';
+                    table_body += '<th>Deposite Amount</th>';
+                    table_body += '<th>Amount to Return</th>';
                     table_body += '</tr>';
+                    table_body += '</thead>';
 
+                    table_body += '<tbody>';
 
                     for (var i = 0; i < response.length; i++) {
 
@@ -38,40 +55,196 @@
                         table_body += '<td style="display:none">' + response[i].UserId + '</td>';
                         table_body += '<td>' + response[i].UserName + '</td>';
 
-                        table_body += '<td><input id="txtMonthlyInstallment_' + i + '" type="text" /></td>';
-                        table_body += '<td><input id="TakenAmount' + i + '" type="text" /></td>';
-                        table_body += '<td><input id="GivenAmount' + i + '" type="text" /></td>';
-                        table_body += '<td><input id="DepositeAmount' + i + '" type="text" /></td>';
-                        table_body += '<td><input id="BalanceAmount' + i + '" type="text" /></td>';
+                        table_body += '<td><input name="MonthlyInstallment" type="text"/></td>';
+                        table_body += '<td><input name="TakenAmount" type="text"/></td>';
+                       // table_body += '<td>' + response[i].BalanceAmount + '</td>';
+                        table_body += '<td><input name="GivenAmount" type="text"/></td>';
+                        table_body += '<td><input name="DepositeAmount" type="text" /></td>';
+                        table_body += '<td><input name="BalanceAmount" type="text" /></td>';
 
                         table_body += '</tr>';
                     }
+                    table_body += '</tbody>';
+
+                    table_body += '<tfoot>';
+                    table_body += '<tr>';
+                    table_body += '<th>Total</th>';
+                    table_body += '<td><input id="txtMonthlyInstallment" type="text" /></td>';
+                    table_body += '<td><input id="txtTotalTakenAmount" type="text" /></td>';
+                    table_body += '<td><input id="txtGivenAmount" type="text" /></td>';
+                    table_body += '<td><input id="txtDepositeAmount" type="text" /></td>';
+                    table_body += '<td><input id="txtBalanceAmount" type="text" /></td>';
+                    table_body += '</tr>';
+                    table_body += '</tfoot>';
 
                     table_body += '</table>';
                     $('#tableDiv').html(table_body);
 
                 },
-                error: function () {
-                    alert("process failed");
+                error: function (error) {
+                    var msg = JSON.parse(error.responseText);
+                    alert(msg.ExceptionMessage);
                 }
             });
         }
 
+
+
+
         $(document).ready(function () {
 
             GetUsers();
+
+            var dp = 0;
+
+            $(document).on('change', 'input[name=DepositeAmount]', function () {
+
+
+                var depositeAmount = $(this).val();
+
+                dp += parseInt(depositeAmount);
+                var total1 = $('#txtDepositeAmount').val(dp);
+
+                var monthlyInstallment = $(this).closest('td').prev('td').prev('td').prev('td').find('input[name="MonthlyInstallment"]').val();
+
+               // var takenAmount = $(this).closest('td').prev('td').prev('td').find('input[name="TakenAmount"]').val();
+
+                var givenAmount = $(this).closest('td').prev('td').find('input[name="GivenAmount"]').val();
+
+
+                var balance = parseInt(givenAmount) - (parseInt(monthlyInstallment) + parseInt(depositeAmount));
+
+                $(this).closest('td').next('td').find('input[name="BalanceAmount"]').val(balance);
+
+            });
+
+          var  monthlyInstallment = 0;
+            $(document).on('change', 'input[name=MonthlyInstallment]', function () {
+
+
+                var MonthlyInstallment = $(this).val();
+
+                monthlyInstallment += parseInt(MonthlyInstallment);
+                var total = $('#txtMonthlyInstallment').val(monthlyInstallment);
+
+            });
+
+
+            var  takenAmount = 0;
+            $(document).on('change', 'input[name=TakenAmount]', function () {
+
+
+                var TakenAmount = $(this).val();
+
+                takenAmount += parseInt(TakenAmount);
+                var total = $('#txtTotalTakenAmount').val(takenAmount);
+
+            });
+
+
+
+
+
+            var  givenAmount = 0;
+            $(document).on('change', 'input[name=GivenAmount]', function () {
+
+
+                var GivenAmount = $(this).val();
+
+                givenAmount += parseInt(GivenAmount);
+                var total = $('#txtGivenAmount').val(givenAmount);
+
+            });
+            
+
+
+
+            //var  balanceAmount = 0;
+            //$(document).on('change', 'input[name=BalanceAmount]', function () {
+
+
+            //    var BalanceAmount = $(this).val();
+
+            //    balanceAmount += parseInt(BalanceAmount);
+            //    var total = $('#txtGivenAmount').val(balanceAmount);
+
+            //});
+
+
+            var userCollection = [];
+
+            $('#btnSave').click(function () {
+
+                $('#tableDiv > tbody >tr').each(function () {
+                    //var chkElement = $(this).find('input[type="checkbox"]');
+
+                    var userId = $(this).find('td:first-child').text();
+                    var monthlyInstallment = $(this).find('input[name="MonthlyInstallment"]').val();
+                    var takenAmount = $(this).find('input[name="TakenAmount"]').val();
+                    var givenAmount = $(this).find('input[name="GivenAmount"]').val();
+                    var depositeAmount = $(this).find('input[name="DepositeAmount"]').val();
+                    var balance = $(this).find('input[name="BalanceAmount"]').val();
+                    var bal = parseInt(takenAmount) - parseInt(depositeAmount);
+
+
+
+
+                    var user = { UserId: userId, MonthlyInstallment: monthlyInstallment, TakenAmount: takenAmount, GivenAmount: givenAmount, DepositeAmount: depositeAmount, BalanceAmount: bal };
+                    userCollection.push(user);
+                });
+
+                var hostId = 1;
+                
+               
+                var kamethiNumber = "KM01";
+                var totalTakenAmount = $('#txtTotalTakenAmount').val();
+                var totalDepositeAmount = $('#txtDepositeAmount').val();
+                var totalBalanceAmount = $('#txtBalanceAmount').val();
+
+
+                var customer = { MonthlyTransactions: userCollection, HostId: hostId, KamethiNumber: kamethiNumber, TotalTakenAmount: totalTakenAmount, TotalDepositeAmount: totalDepositeAmount, TotalBalanceAmount: totalBalanceAmount };
+                console.log(customer);
+                $.ajax({
+                    url: 'kms/Transaction/Insert',
+                    type: 'post',
+                    contentType: 'application/json;charset=utf-8',
+                    dataType: 'json',
+                    data: JSON.stringify(customer),
+                    success: function () {
+                        alert("successfull");
+                    },
+                    error: function (error) {
+
+                        var msg = JSON.parse(error.responseText);
+                        alert(msg.ExceptionMessage);
+                    }
+                });
+
+            });
+
+
+
+
         })
 
 
 
+
+
+
+
     </script>
+
+
 </head>
 <body>
     <div id="tableDiv" style="margin-top:10px">
 
     </div>
 
-    <input id="btnSave" type="button" value="Save" />
+    <div>
+        <input id="btnSave" type="button" value="Save" />
+    </div>
 
 
 </body>
