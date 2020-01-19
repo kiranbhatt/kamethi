@@ -82,5 +82,6 @@
     <Build Include="dbo\Stored Procedures\usp_state.sql" />
     <Build Include="dbo\Stored Procedures\Usp_getname.sql" />
     <Build Include="dbo\User Defined Types\MonthlyTransactionType.sql" />
+    <Build Include="dbo\Stored Procedures\Usp_PopulateMonthlyTransaction.sql" />
   </ItemGroup>
 </Project>

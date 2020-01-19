@@ -11,6 +11,6 @@ namespace KMS.BL.Interface
     {
         List<string> GetUsers(string userName);
 
-        List<User> GetUsers();
+        List<UserVM> GetUsers();
     }
 }

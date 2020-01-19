@@ -24,9 +24,9 @@ namespace KMS.Service.Controllers
         /// https://localhost:44307/kms/User/GetAll
         /// </summary>
         /// <returns></returns>
-        public List<User> GetAll()
+        public List<UserVM> GetAll()
         {
-            List<User> users= userService.GetUsers();
+            List<UserVM> users= userService.GetUsers();
             return users;
         }
 

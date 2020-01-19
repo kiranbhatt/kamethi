@@ -5,7 +5,8 @@
     [IsPresent]    BIT    NULL,
     [CreatedBy]    INT    NULL,
     [CreatedDate]  DATE   CONSTRAINT [DF_MonthlyAttendance_CreatedDate] DEFAULT (getdate()) NULL,
-    CONSTRAINT [PK_MonthlyAttendance] PRIMARY KEY CLUSTERED ([AttendanceId] ASC),
-    CONSTRAINT [FK_MonthlyAttendance_User] FOREIGN KEY ([MemberId]) REFERENCES [dbo].[User] ([UserId])
+    CONSTRAINT [PK_MonthlyAttendance] PRIMARY KEY CLUSTERED ([AttendanceId] ASC)
 );
+
+
 

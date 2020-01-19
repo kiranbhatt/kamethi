@@ -4,26 +4,15 @@
     <meta charset="utf-8" />
     <title></title>
     <script src="jquery-3.4.1.js"></script>
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 
 
 
     <script type="text/javascript">
 
-
-        $(document).ready(function () {
-            $('#txtMonthlyInstallment').change(function () {
-
-                alert('change 1');
-            });
-
-
-        });
-
-
-
+        var balance = 0;
         function GetUsers() {
             $.ajax({
                 url: 'kms/User/GetAll',
@@ -47,8 +36,10 @@
                     table_body += '</thead>';
 
                     table_body += '<tbody>';
-
+                    
                     for (var i = 0; i < response.length; i++) {
+
+                        balance += parseInt(response[i].BalanceAmount);
 
                         table_body += '<tr>';
 
@@ -56,11 +47,11 @@
                         table_body += '<td>' + response[i].UserName + '</td>';
 
                         table_body += '<td><input name="MonthlyInstallment" type="text"/></td>';
-                        table_body += '<td><input name="TakenAmount" type="text"/></td>';
-                       // table_body += '<td>' + response[i].BalanceAmount + '</td>';
+                        table_body += '<td><input name="TakenAmount" type="text" value="' + response[i].BalanceAmount + '" disabled/></td>';
+                        //table_body += '<td></td>';
                         table_body += '<td><input name="GivenAmount" type="text"/></td>';
                         table_body += '<td><input name="DepositeAmount" type="text" /></td>';
-                        table_body += '<td><input name="BalanceAmount" type="text" /></td>';
+                        table_body += '<td><input name="BalanceAmount" type="text" disabled/></td>';
 
                         table_body += '</tr>';
                     }
@@ -70,7 +61,7 @@
                     table_body += '<tr>';
                     table_body += '<th>Total</th>';
                     table_body += '<td><input id="txtMonthlyInstallment" type="text" /></td>';
-                    table_body += '<td><input id="txtTotalTakenAmount" type="text" /></td>';
+                    table_body += '<td><input id="txtTotalTakenAmount" type="text"  /></td>';
                     table_body += '<td><input id="txtGivenAmount" type="text" /></td>';
                     table_body += '<td><input id="txtDepositeAmount" type="text" /></td>';
                     table_body += '<td><input id="txtBalanceAmount" type="text" /></td>';
@@ -79,6 +70,7 @@
 
                     table_body += '</table>';
                     $('#tableDiv').html(table_body);
+                    $('#txtTotalTakenAmount').val(balance);
 
                 },
                 error: function (error) {
@@ -121,9 +113,7 @@
           var  monthlyInstallment = 0;
             $(document).on('change', 'input[name=MonthlyInstallment]', function () {
 
-
                 var MonthlyInstallment = $(this).val();
-
                 monthlyInstallment += parseInt(MonthlyInstallment);
                 var total = $('#txtMonthlyInstallment').val(monthlyInstallment);
 
@@ -133,9 +123,7 @@
             var  takenAmount = 0;
             $(document).on('change', 'input[name=TakenAmount]', function () {
 
-
                 var TakenAmount = $(this).val();
-
                 takenAmount += parseInt(TakenAmount);
                 var total = $('#txtTotalTakenAmount').val(takenAmount);
 
@@ -148,9 +136,7 @@
             var  givenAmount = 0;
             $(document).on('change', 'input[name=GivenAmount]', function () {
 
-
                 var GivenAmount = $(this).val();
-
                 givenAmount += parseInt(GivenAmount);
                 var total = $('#txtGivenAmount').val(givenAmount);
 
@@ -159,17 +145,7 @@
 
 
 
-            //var  balanceAmount = 0;
-            //$(document).on('change', 'input[name=BalanceAmount]', function () {
-
-
-            //    var BalanceAmount = $(this).val();
-
-            //    balanceAmount += parseInt(BalanceAmount);
-            //    var total = $('#txtGivenAmount').val(balanceAmount);
-
-            //});
-
+           
 
             var userCollection = [];
 
@@ -241,7 +217,7 @@
     <div id="tableDiv" style="margin-top:10px">
 
     </div>
-
+   
     <div>
         <input id="btnSave" type="button" value="Save" />
     </div>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KMS.BL.Model
 {
-   public class User
+   public class UserVM
     {
         public int UserId { get; set; }
         public string UserName { get; set; }
@@ -14,5 +14,6 @@ namespace KMS.BL.Model
         public string PrimaryPhone { get; set; }
         public string AadhaarUrl { get; set; }
         public bool IsActive { get; set; }
+        public int TakenCredit { get; set; }
     }
 }

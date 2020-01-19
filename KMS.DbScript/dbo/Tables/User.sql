@@ -20,8 +20,8 @@
     [AadhaarNumber]    BIGINT         NULL,
     [PanCardNumber]    NVARCHAR (50)  NULL,
     [UploadAadhaar]    NVARCHAR (MAX) NULL,
-    [UploadPanCard]    NVARCHAR (MAX) NULL,
-    CONSTRAINT [PK__User__3213E83FACC48104] PRIMARY KEY CLUSTERED ([UserId] ASC),
-    CONSTRAINT [FK_User_User] FOREIGN KEY ([UserId]) REFERENCES [dbo].[User] ([UserId])
+    [UploadPanCard]    NVARCHAR (MAX) NULL
 );
+
+
 

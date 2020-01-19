@@ -52,7 +52,7 @@
     <Compile Include="Model\CityVM.cs" />
     <Compile Include="Model\MonthlyTransactionVM.cs" />
     <Compile Include="Model\StateVM.cs" />
-    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\ListtoDataTableConverter.cs" />
   </ItemGroup>

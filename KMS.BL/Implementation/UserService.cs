@@ -39,22 +39,23 @@ namespace KMS.BL.Implementation
             return names;
         }
 
-        public List<User> GetUsers()
+        public List<UserVM> GetUsers()
         {
-            List<User> users = new List<User>();
-            DataTable result = Execute(CommandType.Text, "select UserId,UserName,Email,PrimaryPhone,UploadAadhaar,IsActive from [User]");
+            List<UserVM> users = new List<UserVM>();
+            DataTable result = Execute(CommandType.StoredProcedure, "Usp_PopulateMonthlyTransaction");
 
             if (result != null&& result.Rows.Count>0)
             {
                 for (int i = 0; i < result.Rows.Count; i++)
                 {
-                    User user = new User();
+                    UserVM user = new UserVM();
                     user.UserId = Convert.ToInt32(result.Rows[i]["UserId"]);
                     user.UserName = Convert.ToString(result.Rows[i]["UserName"]);
                     user.Email = Convert.ToString(result.Rows[i]["Email"]);
                     user.PrimaryPhone = Convert.ToString(result.Rows[i]["PrimaryPhone"]);
                     user.AadhaarUrl = Convert.ToString(result.Rows[i]["UploadAadhaar"]);
                     user.IsActive = Convert.ToBoolean(result.Rows[i]["IsActive"]==DBNull.Value ? "false":"true");
+                    user.TakenCredit = Convert.ToInt32(result.Rows[i]["Balance Amount"] == DBNull.Value ? 0 : Convert.ToInt32(result.Rows[i]["Balance Amount"]));
                     users.Add(user);
                 }
             }
