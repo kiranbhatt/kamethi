@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="KMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KMS.dbo.User' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Password" />
+            <PropertyRef Name="CreatedDate" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Role" Type="nchar" MaxLength="10" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="PrimaryPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="SecondaryPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="CurrentState" Type="int" />
+          <Property Name="CurrentCity" Type="int" />
+          <Property Name="CurrentAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsAddressSame" Type="bit" />
+          <Property Name="PermanentState" Type="int" />
+          <Property Name="PermanentCity" Type="int" />
+          <Property Name="PermanentAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="AadhaarNumber" Type="bigint" />
+          <Property Name="PanCardNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="UploadAadhaar" Type="nvarchar(max)" />
+          <Property Name="UploadPanCard" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="KMSModelStoreContainer">
+          <EntitySet Name="User" EntityType="Self.User" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [User].[UserId] AS [UserId], 
+    [User].[UserName] AS [UserName], 
+    [User].[Email] AS [Email], 
+    [User].[Password] AS [Password], 
+    [User].[Role] AS [Role], 
+    [User].[CreatedDate] AS [CreatedDate], 
+    [User].[ModifiedDate] AS [ModifiedDate], 
+    [User].[IsActive] AS [IsActive], 
+    [User].[DateOfBirth] AS [DateOfBirth], 
+    [User].[PrimaryPhone] AS [PrimaryPhone], 
+    [User].[SecondaryPhone] AS [SecondaryPhone], 
+    [User].[CurrentState] AS [CurrentState], 
+    [User].[CurrentCity] AS [CurrentCity], 
+    [User].[CurrentAddress] AS [CurrentAddress], 
+    [User].[IsAddressSame] AS [IsAddressSame], 
+    [User].[PermanentState] AS [PermanentState], 
+    [User].[PermanentCity] AS [PermanentCity], 
+    [User].[PermanentAddress] AS [PermanentAddress], 
+    [User].[AadhaarNumber] AS [AadhaarNumber], 
+    [User].[PanCardNumber] AS [PanCardNumber], 
+    [User].[UploadAadhaar] AS [UploadAadhaar], 
+    [User].[UploadPanCard] AS [UploadPanCard]
+    FROM [dbo].[User] AS [User]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Password" />
+            <PropertyRef Name="CreatedDate" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="PrimaryPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecondaryPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentState" Type="Int32" />
+          <Property Name="CurrentCity" Type="Int32" />
+          <Property Name="CurrentAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsAddressSame" Type="Boolean" />
+          <Property Name="PermanentState" Type="Int32" />
+          <Property Name="PermanentCity" Type="Int32" />
+          <Property Name="PermanentAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AadhaarNumber" Type="Int64" />
+          <Property Name="PanCardNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UploadAadhaar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UploadPanCard" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="KMSDbContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="Self.User" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KMSModelStoreContainer" CdmEntityContainer="KMSDbContext">
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="KMSModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="PrimaryPhone" ColumnName="PrimaryPhone" />
+                <ScalarProperty Name="SecondaryPhone" ColumnName="SecondaryPhone" />
+                <ScalarProperty Name="CurrentState" ColumnName="CurrentState" />
+                <ScalarProperty Name="CurrentCity" ColumnName="CurrentCity" />
+                <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
+                <ScalarProperty Name="IsAddressSame" ColumnName="IsAddressSame" />
+                <ScalarProperty Name="PermanentState" ColumnName="PermanentState" />
+                <ScalarProperty Name="PermanentCity" ColumnName="PermanentCity" />
+                <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+                <ScalarProperty Name="AadhaarNumber" ColumnName="AadhaarNumber" />
+                <ScalarProperty Name="PanCardNumber" ColumnName="PanCardNumber" />
+                <ScalarProperty Name="UploadAadhaar" ColumnName="UploadAadhaar" />
+                <ScalarProperty Name="UploadPanCard" ColumnName="UploadPanCard" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

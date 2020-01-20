@@ -29,6 +29,10 @@ namespace KMS.Service.Controllers
             List<UserVM> users= userService.GetUsers();
             return users;
         }
+        public UserVM Login(string email,string password)
+        {
+            return new UserVM();
+        }
 
     }
 }

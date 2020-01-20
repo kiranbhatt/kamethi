@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using KMS.BL.Model;
+using KMS.DB;
 
 namespace KMS.BL.Implementation
 {
-    public class UserService : BaseDbRepository, IUserService
+    public class UserService : UserRepository, IUserService
     {
         public UserService(string connectionString) : base(connectionString)
         {
@@ -39,7 +40,7 @@ namespace KMS.BL.Implementation
             return names;
         }
 
-        public List<UserVM> GetUsers()
+        public new List<UserVM> GetUsers()
         {
             List<UserVM> users = new List<UserVM>();
             DataTable result = Execute(CommandType.StoredProcedure, "Usp_PopulateMonthlyTransaction");
@@ -60,6 +61,11 @@ namespace KMS.BL.Implementation
                 }
             }
             return users;
+        }
+
+        public UserVM Login(string email, string password)
+        {
+            throw new NotImplementedException();
         }
     }
 }

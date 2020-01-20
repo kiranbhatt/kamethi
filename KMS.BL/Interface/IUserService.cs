@@ -12,5 +12,6 @@ namespace KMS.BL.Interface
         List<string> GetUsers(string userName);
 
         List<UserVM> GetUsers();
+        UserVM Login(string email,string password);
     }
 }
