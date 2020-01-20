@@ -13,7 +13,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT A.UserId, A.UserName, B.[Balance Amount] from	(select *  from [User]) A
+	SELECT A.UserId, A.UserName,A.Email,A.PrimaryPhone,A.UploadAadhaar,A.IsActive , B.[Balance Amount] from	(select *  from [User]) A
 
 					LEFT OUTER JOIN
 
@@ -23,5 +23,4 @@ BEGIN
                              (SELECT        DATEPART(M, DATEADD(M, - 1, GETDATE())) ))) B
 
 							 ON A.UserId= B.UserId
-						 
 END

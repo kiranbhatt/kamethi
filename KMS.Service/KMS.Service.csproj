@@ -136,10 +136,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="delete-popup.html" />
     <Content Include="Global.asax" />
     <Content Include="jquery-3.4.1.js" />
+    <Content Include="layout-1.html" />
+    <Content Include="layout-2.html" />
+    <Content Include="popup-accountcreation.html" />
+    <Content Include="popup-contact.html" />
+    <Content Include="popup-delete.html" />
+    <Content Include="popup-exception.html" />
+    <Content Include="popup-login.html" />
+    <Content Include="register.html" />
+    <Content Include="save popup.html" />
     <Content Include="Transaction.html" />
     <Content Include="User.html" />
+    <Content Include="userlist-2.html" />
+    <Content Include="userlist1.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

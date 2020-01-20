@@ -22,9 +22,9 @@
                 data: "{}",
                 success: function (response) {
 
-                    var table_body = '<table id="tblTransaction" class="table table-bordered">';
+                    var table_body = '<table id="tblTransaction" class="table">';
 
-                    table_body = '<thead>';
+                    table_body = '<thead class="thead-dark">';
                     table_body += '<tr>';
                     table_body += '<th>Name</th>';
                     table_body += '<th>Monthly Installment</th>';
@@ -39,7 +39,7 @@
                     
                     for (var i = 0; i < response.length; i++) {
 
-                        balance += parseInt(response[i].BalanceAmount);
+                        balance += parseInt(response[i].TakenCredit);
 
                         table_body += '<tr>';
 
@@ -47,7 +47,7 @@
                         table_body += '<td>' + response[i].UserName + '</td>';
 
                         table_body += '<td><input name="MonthlyInstallment" type="text"/></td>';
-                        table_body += '<td><input name="TakenAmount" type="text" value="' + response[i].BalanceAmount + '" disabled/></td>';
+                        table_body += '<td><input name="TakenAmount" type="text" value="' + response[i].TakenCredit + '" disabled/></td>';
                         //table_body += '<td></td>';
                         table_body += '<td><input name="GivenAmount" type="text"/></td>';
                         table_body += '<td><input name="DepositeAmount" type="text" /></td>';
